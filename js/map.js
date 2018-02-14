@@ -16,7 +16,7 @@ class App {
     });
   }
 
-  //---------- Récupération donnée stations -----------
+  //---------- Récupération données stations -----------
   //---------------------------------------------------
   loadApi() {
     $.getJSON("https://api.jcdecaux.com/vls/v1/stations?contract=Lyon&apiKey=00725f1585ae004d2043b59894843d43b6650b8e").then(api => {
@@ -61,8 +61,9 @@ class App {
   //---------- Block informations station -----------
   //---------------------------------------------------
   infoStation(station) {
-    this.station = station;
     google.maps.event.addListener(this.marker,"click", () => {
+      this.station = station;
+      console.log(this.station);
       const reservation = document.querySelector("#reservation");
       const reserver = document.querySelector("#reserver");
       const confirmation = document.querySelector("#confirmation");
@@ -85,8 +86,40 @@ class App {
           <p>Vélos disponibles: <span>${station.available_bikes}</span></p>
           <p>Places disponibles: <span>${station.available_bike_stands}</span></p>
         `;
+      this.reservation(station);
     });
   }
+
+  //---------- Block informations station -----------
+  //---------------------------------------------------
+  reservation(station){
+    this.resa = station;
+    const buttonReserver = document.querySelector("#button-reservation").querySelector("button");
+    buttonReserver.addEventListener("click", ()=>{
+      if (this.resa.available_bikes > 0) {
+        confirmation.style.display = "block";
+        reserver.style.display = "none";
+        this.confirmation();
+      } else {
+        confirmation.style.display = "none";
+        reserver.style.display = "block";
+        alert("aucun vélo n'est disponible dans cette station");
+      }
+    });
+
+  }
+
+  confirmation(){
+    const buttonConfirm = document.querySelector("#valider");
+    const sectionTimer = document.querySelector("#timer");
+    let intervalID = 0;
+    let time;
+    buttonConfirm.addEventListener("click", () =>{
+      sectionTimer.style.display = "block";
+      sectionTimer.scrollIntoView();
+    });
+  }
+
 }
 
 addEventListener("load", () => {
