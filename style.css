@@ -1,0 +1,239 @@
+body{
+    padding: 0;
+    margin: 0;
+    background-image: url("images/texture.jpg");
+}
+/* --------------- HEADER --------------- */
+header{
+    background-color: #344C5B;
+    text-align: center;
+}
+
+header img{
+    max-width: 80%;
+    margin: 15px 0;
+}
+/* --------------- SECTION PRESENTATION --------------- */
+#presentation{
+    text-align: center;  
+    background-color: rgba(118, 152, 164, 0.9);
+}
+
+h1{
+    margin-top: 0;
+    padding-top: 20px;
+    text-transform: uppercase;
+    font-size: 2em;
+}
+
+#presentation p{
+    font-size: 1.2em;
+}
+
+#block-slider{
+    display: flex;
+    justify-content: center;
+}
+
+#slider{
+    border: 3px solid #29313F;
+    border-radius: 5px;
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.7);
+    position: relative;
+    max-width: 97%;
+    margin-bottom: 100px;
+}
+
+#slider img{
+    max-width: 100%;
+    height: auto;
+}
+
+#flechegauche{
+    position: absolute;
+    top: 43%;
+    left: 1%;
+}
+
+#flechedroite{
+    position: absolute;
+    top: 43%;
+    right: 1%;
+}
+
+#flechegauche:hover, #flechedroite:hover{
+    color: lightseagreen;
+}
+
+/* --------------- SECTION GOOGLE MAP --------------- */
+#google-map{ 
+    display: flex;
+    justify-content: space-around;
+    background-color: rgba(118, 152, 164, 0.9);
+    padding-bottom: 50px;
+}
+
+#map{
+    width: 60%;
+    height: 600px;
+    border-radius: 5px;
+    border: 3px solid #29313F; 
+    box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.6);
+}
+    /* block infos stations */
+#reservation{
+    background-color: #344C5B;
+    color: #F2F2F3;
+    width: 25%;
+    border: 3px solid #29313F;
+    border-radius: 5px;
+    box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.6);
+    position: relative;
+    display: none;
+}
+
+#reservation h2{
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    color: #F2F2F3;
+}
+
+    /* block contenant les infos stations après click sur marker */
+#informations{
+    padding: 0 10px;
+}
+
+#informations p {
+    margin-bottom: 30px; 
+}
+
+#informations span{
+    font-weight: bold;
+}
+
+    /* button pour réserver et confirmer la réservation */
+#button-reservation, #button-confirmation{
+    position: absolute;
+    bottom: 15%;
+    left: 43%;
+}
+
+#button-reservation button, #button-confirmation button{
+    padding: 10px;
+}
+
+    /* block confirmation de réservation */
+#confirmation{
+    display: none;
+}
+
+#confirmation p{
+    padding: 0 20px;
+}
+
+#effacer{
+    position: absolute;
+    left: 43%;
+}
+
+#canvas{
+    width: 250px;
+    max-width: 95%;
+    height: 150px;
+    border: 1px solid black;
+    background-color: burlywood;
+    margin: auto;
+    display: block;
+}
+
+/* --------------- section timer --------------- */
+#timer{
+    background-color: rgba(118, 152, 164, 0.9);
+    display: none;
+    padding-bottom: 100px;
+}
+
+#block-timer{
+    width: 70%;
+    margin: auto;
+    border-radius: 5px;
+    border: 2px solid #29313F;
+    background-color: #344C5B;
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.7);
+}
+
+#time{
+    color: #F2F2F3;
+    text-align: center;
+}
+
+#time span{
+    font-weight: bold;
+}
+
+/* --------------- FOOTER --------------- */
+footer{
+    height: 80px;
+    line-height: 80px;
+    background-color: #344C5B;
+}
+
+footer p{
+    margin: 0 0 0 10px;
+    color: #F2F2F3;
+}
+
+@media screen and (max-width: 960px){
+
+    #flechegauche, #flechedroite{
+        font-size: 0.8em;
+    }
+
+    #google-map{
+        justify-content: initial;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #map{
+        width: 95%;
+        height: 400px;   
+    }
+
+    #reservation{
+        height: 600px;
+        width: 75%;
+        margin-top: 20px;
+    }
+}
+
+@media screen and (max-width: 780px){
+
+    #flechegauche, #flechedroite{
+        font-size: 0.5em;
+    }
+
+    #google-map{
+        justify-content: initial;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #map{
+        width: 95%;
+        height: 400px;   
+    }
+
+    #reservation{
+        height: 600px;
+        width: 95%;
+        margin-top: 20px;
+    }
+
+    #block-timer{
+        width: 93%;
+        max-width: 99%;
+        padding: 5px;
+    }
+}

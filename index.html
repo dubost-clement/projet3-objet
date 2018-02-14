@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Location de vélos à Lyon. Bienvenue sur Bike Attitude. Vous avez besoin d'un vélo pour un déplacement ? Nous vous proposons une solution adaptée à vos besoins !" />
+    <meta property="og:title" content="Bike Attitude"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="http://www.dubostclement.fr/projet3"/>
+    <meta property="og:image" content="http://www.dubostclement.fr/Projet3/images/velo.png"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" /> 
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="fontawesome/css/font-awesome.min.css">
+    <title>Bike Attitude</title>
+</head>
+<body>
+    <header>
+        <img src="images/velo.png" alt="logo vélo">
+    </header>
+
+    <section id="presentation">
+        <h1>bienvenue sur bike attitude</h1>
+        <p>Besoin d'un vélo pour vos déplacement ? Nous avons la solution !</p>
+        <div id="block-slider">
+            <div id="slider">
+                <img src="images/slider1.jpg" alt="images explications fonctionnement réservation">
+                    <div id="flechegauche">
+                        <i class="fa fa-chevron-circle-left fa-3x" aria-hidden="true"></i>
+                    </div>
+                    <div id="flechedroite">
+                        <i class="fa fa-chevron-circle-right fa-3x" aria-hidden="true"></i>
+                    </div>
+            </div>
+        </div>
+        
+    </section>
+
+    <section id="google-map">
+        <div id="map"></div>
+        
+        <div id="reservation">
+            <div id="reserver">
+                <h2>détails de la station</h2>
+                <div id="informations"></div>
+
+                <div id="button-reservation">
+                    <button>Réserver</button>
+                </div>
+            </div>
+
+            <div id="confirmation">
+                <h2>Réservation</h2>
+                <p>Pour confirmer la réservation de votre vélo, apposez votre signature dans le champ ci-dessous, puis validez.</p>
+
+                <canvas id="canvas"></canvas>
+                <button id="effacer">effacer</button>
+                <button id="getimage">image</button>
+
+                <div id="button-confirmation">
+                    <button id="valider">Valider</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="timer">
+        <div id="block-timer">
+            <p id="time"></p>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2017 Bike Attitude</p>
+    </footer>
+
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_TRsuZe937XLeMc4TflEvtqvAJXlzoNY" async defer></script>
+    <script type="text/javascript" src="js/map.js"></script>
+   
+</body>
+</html>
