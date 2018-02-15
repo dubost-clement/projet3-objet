@@ -2,7 +2,6 @@ class App {
   constructor() {
     this.initMap();
     this.loadApi();
-
     this.initReservationListener()
   }
 
@@ -67,7 +66,6 @@ class App {
   infoStation(station) {
     google.maps.event.addListener(this.marker, "click", () => {
       this.station = station;
-      console.log(this.station);
       const reservation = document.querySelector("#reservation");
       const reserver = document.querySelector("#reserver");
       const confirmation = document.querySelector("#confirmation");
@@ -90,7 +88,6 @@ class App {
           <p>Vélos disponibles: <span>${station.available_bikes}</span></p>
           <p>Places disponibles: <span>${station.available_bike_stands}</span></p>
         `;
-      //this.reservation(station);
     })
     ;
   }
@@ -107,24 +104,64 @@ class App {
       }
       else {
         confirmation.style.display = "none";
-        reserver.style.display = "block";
+        reservation.style.display = "block";
         alert("aucun vélo n'est disponible dans cette station");
       }
     })
   }
 
+  //---------- Block réservation station -----------
+  //---------------------------------------------------
   confirmation() {
     const buttonConfirm = document.querySelector("#valider");
     const sectionTimer = document.querySelector("#timer");
+    const textTimer = document.querySelector("#time");
     let intervalID = 0;
     let time;
+    let stationAddress = this.station.address;
+
+    //---------- Block timer réservation -----------
+    //---------------------------------------------------
     buttonConfirm.addEventListener("click", () => {
-      sectionTimer.style.display = "block";
+      clearInterval(intervalID);
+      reservation.style.display = "none";
+      sessionStorage.setItem("station", stationAddress);
+      time = 1200;
       sectionTimer.scrollIntoView();
-    })
-    ;
+      
+      intervalID = setInterval (() => {
+        sectionTimer.style.display = "block";
+        sessionStorage.setItem("timer", time);
+        const {minutes,seconds} = getMinutesAndSeconds(time);
+        textTimer.innerHTML =
+          `Vous avez bien réservé un vélo à <span>${stationAddress}</span> pour une durée de <span>${minutes}:${seconds}</span>`
+        time = time - 1;
+        if (time === 0) {
+          clearInterval(intervalID);
+          textTimer.innerHTML =
+            `Votre réservation à la station <span>${stationAddress}</span> a expiré !`
+          sessionStorage.clear("station", "timer");
+        }
+      }, 1000)
+    });
   }
 
+}
+
+const getMinutesAndSeconds = (time) => {
+  let minutes = Math.floor(time / 60);
+  let seconds = time - minutes * 60;
+
+  if (seconds < 10) {
+    seconds = `0${seconds}`;
+  }
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  return {
+    minutes,
+    seconds
+  };
 }
 
 addEventListener("load", () => {
