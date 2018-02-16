@@ -3,6 +3,7 @@ class App {
     this.initMap();
     this.loadApi();
     this.initReservationListener();
+    this.canvas = new Canvas();
   }
 
   //---------- Initialisation google map -----------
@@ -48,14 +49,14 @@ class App {
 
       this.marker = new google.maps.Marker({
         position: station.position,
-        map: veloStation.map,
+        map: this.map,
         title: station.address,
         icon: iconMarker
       });
       markers = markers.concat(this.marker);
       this.infoStation(station);
     }
-    new MarkerClusterer(veloStation.map, markers, {
+    new MarkerClusterer(this.map, markers, {
       imagePath:
         "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m"
     });
@@ -97,6 +98,7 @@ class App {
   initReservationListener(){
     const buttonReserver = document.querySelector("#button-reservation").querySelector("button");
     buttonReserver.addEventListener("click", () => {
+      this.canvas.clear();
       if (this.station.available_bikes > 0) {
         confirmation.style.display = "block";
         reserver.style.display = "none";
@@ -164,114 +166,7 @@ const getMinutesAndSeconds = (time) => {
   };
 }
 
-
-// --------------- Canvas signature ---------------
-// ------------------------------------------------------------ 
-  const Sign = {
-  
-    //signature
-    canvas: document.getElementById("canvas"),
-    context: this.canvas.getContext("2d"),
-  
-    //dernière position non définie pour l'instant
-    lastPos: null,
-  
-    position: function (pos) {
-      var rect = Sign.canvas.getBoundingClientRect(); //va chercher la position relative et la taille de l'élément par rapport à sa zone d'affichage
-      pos.x = (pos.x - rect.left) / (rect.right - rect.left) * Sign.canvas.width; //récupère la position exacte de la souris en X
-      pos.y = (pos.y - rect.top) / (rect.bottom - rect.top) * Sign.canvas.height; //idem en Y
-      return pos;
-    },
-  
-    positionSouris: function (e) {
-      return Sign.position({
-        x: e.clientX,
-        y: e.clientY
-      }); //récupère la position du clic dans le navigateur
-    },
-  
-    positionToucher: function (e) {
-      return Sign.position({
-        x: e.touches[0].clientX,
-        y: e.touches[0].clientY
-      }); //récupère la position du premier toucher dans le navigateur
-    },
-  
-    dessiner: function (pos1, pos2) {
-      Sign.context.moveTo(pos1.x, pos1.y); //point de départ
-      Sign.context.lineTo(pos2.x, pos2.y); //point d'arrivée
-      Sign.context.stroke();
-    },
-  
-    start: function (pos) {
-      Sign.lastPos = pos; //prend la dernière pos connue
-    },
-  
-    stop: function (pos) {
-      if (Sign.lastPos) { //si lastpos n'est pas null, on dessine et on arrête pour finir le dessin
-        Sign.dessiner(Sign.lastPos, pos);
-        Sign.lastPos = null; //on a fini de dessiner, évite de lier le dernier tracé à un nouveau tracé
-      }
-    },
-  
-    move: function (pos) {
-      if (Sign.lastPos) {
-        var newPos = pos;
-        Sign.dessiner(Sign.lastPos, newPos);
-        Sign.lastPos = newPos; //relie la dernière pos avec la nouvelle pour signifier le mouvement
-      }
-    },
-  
-    clear: function () {
-      Sign.canvas.width = Sign.canvas.width;
-    }
-  };
-
-  Sign.context.strokeStyle = "#000000";
-  Sign.context.lineWidth = 1.5;
-  Sign.context.lineCap = "round";
-  
-  //effacer canvas
-  const bouttonClear = document.querySelector("#effacer");
-  bouttonClear.addEventListener("click", Sign.clear);
-  
-  // --------------- Mouse events ---------------
-  Sign.canvas.addEventListener("mousedown", (e) => {
-    if (e.buttons === 1) Sign.start(Sign.positionSouris(e));
-  });
-  Sign.canvas.addEventListener("mouseup", (e) => {
-    Sign.stop(Sign.positionSouris(e));
-  });
-  Sign.canvas.addEventListener("mousemove", (e) => {
-    Sign.move(Sign.positionSouris(e));
-  });
-  Sign.canvas.addEventListener("mouseleave", (e) => {
-    Sign.stop(Sign.positionSouris(e));
-  });
-  Sign.canvas.addEventListener("mouseenter", (e) => {
-    if (e.buttons === 1) Sign.start(Sign.positionSouris(e));
-  });
-  
-  // --------------- Touch events ---------------
-  Sign.canvas.addEventListener("touchstart", (e) => {
-    e.preventDefault();
-    if (e.touches.length > 0) Sign.start(Sign.positionToucher(e));
-  });
-  Sign.canvas.addEventListener("touchend", (e) => {
-    e.preventDefault();
-    if (e.touches.length > 0) Sign.stop(Sign.positionToucher(e));
-  });
-  Sign.canvas.addEventListener("touchmove", (e) => {
-    e.preventDefault();
-    if (e.touches.length > 0) Sign.move(Sign.positionToucher(e));
-  });
-
-
-
-
-
 addEventListener("load", () => {
-  veloStation = new App();
-  console.log(veloStation);
+  new App()
 })
 ;
