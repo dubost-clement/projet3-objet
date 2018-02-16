@@ -4,6 +4,8 @@ class App {
     this.loadApi();
     this.initReservationListener();
     this.canvas = new Canvas();
+    this.timer = new Timer();
+    this.timer.restartExistingTimer();
   }
 
   //---------- Initialisation google map -----------
@@ -117,53 +119,17 @@ class App {
   confirmation() {
     const buttonConfirm = document.querySelector("#valider");
     const sectionTimer = document.querySelector("#timer");
-    const textTimer = document.querySelector("#time");
-    let intervalID = 0;
-    let time;
-    let stationAddress = this.station.address;
 
     //---------- Block timer réservation -----------
     //---------------------------------------------------
+
     buttonConfirm.addEventListener("click", () => {
-      clearInterval(intervalID);
+      this.timer.start(this.station.address, 1200);
       reservation.style.display = "none";
-      time = 1200;
       sectionTimer.scrollIntoView();
-      
-      intervalID = setInterval (() => {
-        sectionTimer.style.display = "block";
-        sessionStorage.setItem("station", stationAddress);
-        sessionStorage.setItem("timer", time);
-        const {minutes,seconds} = getMinutesAndSeconds(time);
-        textTimer.innerHTML =
-          `Vous avez bien réservé un vélo à <span>${stationAddress}</span> pour une durée de <span>${minutes}:${seconds}</span>`
-        time = time - 1;
-        if (time === 0) {
-          clearInterval(intervalID);
-          textTimer.innerHTML =
-            `Votre réservation à la station <span>${stationAddress}</span> a expiré !`
-          sessionStorage.clear("station", "timer");
-        }
-      }, 1000)
     });
   }
 
-}
-
-const getMinutesAndSeconds = (time) => {
-  let minutes = Math.floor(time / 60);
-  let seconds = time - minutes * 60;
-
-  if (seconds < 10) {
-    seconds = `0${seconds}`;
-  }
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
-  return {
-    minutes,
-    seconds
-  };
 }
 
 addEventListener("load", () => {
