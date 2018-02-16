@@ -7,6 +7,7 @@ body{
 header{
     background-color: #344C5B;
     text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.7);
 }
 
 header img{
@@ -40,29 +41,31 @@ h1{
     border-radius: 5px;
     box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.7);
     position: relative;
-    max-width: 97%;
+    max-width: 95%;
     margin-bottom: 100px;
 }
 
 #slider img{
     max-width: 100%;
-    height: auto;
+    height: 600px;
 }
 
 #flechegauche{
     position: absolute;
     top: 43%;
     left: 1%;
+    color: #29313F;
 }
 
 #flechedroite{
     position: absolute;
     top: 43%;
     right: 1%;
+    color: #29313F;
 }
 
 #flechegauche:hover, #flechedroite:hover{
-    color: lightseagreen;
+    color: #344C5B;
 }
 
 /* --------------- SECTION GOOGLE MAP --------------- */
@@ -177,6 +180,7 @@ footer{
     height: 80px;
     line-height: 80px;
     background-color: #344C5B;
+    border-top: 1px solid rgba(0, 0, 0, 0.7);
 }
 
 footer p{
@@ -185,6 +189,11 @@ footer p{
 }
 
 @media screen and (max-width: 960px){
+
+    #slider img{
+        max-width: 100%;
+        height: 350px;
+    }
 
     #flechegauche, #flechedroite{
         font-size: 0.8em;
@@ -209,6 +218,11 @@ footer p{
 }
 
 @media screen and (max-width: 780px){
+
+    #slider img{
+        max-width: 100%;
+        height: 200px;
+    }
 
     #flechegauche, #flechedroite{
         font-size: 0.5em;
