@@ -20,7 +20,7 @@ class Timer {
         clearInterval(this.intervalID);
         this.textTimer.innerHTML =
           `Votre réservation à la station <span>${this.stationAddress}</span> a expiré !`;
-        sessionStorage.clear("station", "timer");
+          sessionStorage.clear("station", "timer");
       }
     }, 1000)
   }
