@@ -53,4 +53,4 @@ flecheGauche.addEventListener("click", () => {
 
 document.addEventListener("keydown", (e) => {
   slider.clavier(e);
-});
+})

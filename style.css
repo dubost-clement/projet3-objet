@@ -31,6 +31,11 @@ h1{
     font-size: 1.2em;
 }
 
+#presentation h2{
+    text-transform: uppercase;
+    margin-top: 80px;
+}
+
 #block-slider{
     display: flex;
     justify-content: center;
@@ -67,6 +72,17 @@ h1{
 #flechegauche:hover, #flechedroite:hover{
     color: #344C5B;
 }
+/* --------------- Titre carte google --------------- */
+#titre{
+    background-color: rgba(118, 152, 164, 0.9);  
+}
+
+#titre h2{
+    margin: 0;
+    padding-bottom: 30px;
+    text-align: center;
+    text-transform: uppercase;
+}
 
 /* --------------- SECTION GOOGLE MAP --------------- */
 #google-map{ 
@@ -95,11 +111,12 @@ h1{
     display: none;
 }
 
-#reservation h2{
+#reservation h3{
     text-align: center;
     text-transform: uppercase;
     margin-bottom: 40px;
     color: #F2F2F3;
+    font-size: 1.5em;
 }
 
     /* block contenant les infos stations après click sur marker */
@@ -133,6 +150,7 @@ h1{
 
 #confirmation p{
     padding: 0 20px;
+    margin-bottom: 40px;
 }
 
 #effacer{
@@ -185,6 +203,14 @@ footer{
 
 footer p{
     margin: 0 0 0 10px;
+    color: #F2F2F3;
+    position: relative;
+}
+
+footer a{
+    position: absolute;
+    right: 2%;
+    text-decoration: none;
     color: #F2F2F3;
 }
 
