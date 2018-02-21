@@ -124,9 +124,9 @@ class App {
     //---------------------------------------------------
 
     buttonConfirm.addEventListener("click", () => {
-      this.timer.start(this.station.address, 1200);
-      reservation.style.display = "none";
-      sectionTimer.scrollIntoView();
+        this.timer.start(this.station.address, 1200);
+        reservation.style.display = "none";
+        sectionTimer.scrollIntoView();     
     });
   }
 
