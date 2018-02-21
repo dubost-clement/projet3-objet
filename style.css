@@ -38,14 +38,19 @@ h1{
 }
 
 #block-slider{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
 }
 
 #slider{
     border: 3px solid #29313F;
     border-radius: 5px;
-    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.7);
+    -webkit-box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.7);
+            box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.7);
     position: relative;
     max-width: 95%;
     margin-bottom: 100px;
@@ -87,8 +92,11 @@ h1{
 
 /* --------------- SECTION GOOGLE MAP --------------- */
 #google-map{ 
+    display: -webkit-box; 
+    display: -ms-flexbox; 
     display: flex;
-    justify-content: space-around;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
     background-color: rgba(118, 152, 164, 0.9);
     padding-bottom: 50px;
 }
@@ -98,7 +106,8 @@ h1{
     height: 600px;
     border-radius: 5px;
     border: 3px solid #29313F; 
-    box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.6);
+    -webkit-box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.6); 
+            box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.6);
 }
     /* block infos stations */
 #reservation{
@@ -107,7 +116,8 @@ h1{
     width: 25%;
     border: 3px solid #29313F;
     border-radius: 5px;
-    box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.6);
+    -webkit-box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.6);
+            box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.6);
     position: relative;
     display: none;
 }
@@ -182,7 +192,8 @@ h1{
     border-radius: 5px;
     border: 2px solid #29313F;
     background-color: #344C5B;
-    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.7);
+    -webkit-box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.7);
+            box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.7);
 }
 
 #time{
@@ -227,9 +238,16 @@ footer a{
     }
 
     #google-map{
-        justify-content: initial;
-        flex-direction: column;
-        align-items: center;
+        -webkit-box-pack: initial;
+            -ms-flex-pack: initial;
+                justify-content: initial;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
     }
 
     #map{
@@ -254,6 +272,10 @@ footer a{
         margin-top: 50px;
     }
 
+    #slider{
+        margin-bottom: 50px;
+    }
+
     #slider img{
         max-width: 100%;
         height: 200px;
@@ -264,9 +286,16 @@ footer a{
     }
 
     #google-map{
-        justify-content: initial;
-        flex-direction: column;
-        align-items: center;
+        -webkit-box-pack: initial;
+            -ms-flex-pack: initial;
+                justify-content: initial;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
     }
 
     #map{
