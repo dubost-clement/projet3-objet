@@ -1,5 +1,6 @@
 class App {
   constructor() {
+    this.slider = new Slider();
     this.initMap();
     this.loadApi();
     this.initReservationListener();
