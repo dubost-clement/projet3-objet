@@ -1,12 +1,10 @@
-class App {
-  constructor() {
-    this.slider = new Slider();
+class Map {
+  constructor(timer) {
     this.initMap();
     this.loadApi();
     this.initReservationListener();
     this.canvas = new Canvas();
-    this.timer = new Timer();
-    this.timer.restartExistingTimer();
+    this.timer = timer;
   }
 
   //---------- Initialisation google map -----------
@@ -127,13 +125,8 @@ class App {
     buttonConfirm.addEventListener("click", () => {
         this.timer.start(this.station.address, 1200);
         reservation.style.display = "none";
-        sectionTimer.scrollIntoView();     
+        sectionTimer.scrollIntoView();
     });
   }
 
 }
-
-addEventListener("load", () => {
-  new App()
-})
-;
